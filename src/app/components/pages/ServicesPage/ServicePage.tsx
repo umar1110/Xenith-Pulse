@@ -35,57 +35,64 @@ function ServicePage() {
     },
   ];
 
-  useGSAP(() => {
+ 
+
+  // useGSAP(() => {
+  //   const cards = document.querySelectorAll(".service-card");
+
+  //   cards.forEach((card, index) => {
+  //     gsap.from(card, {
+  //       y: "30%",
+  //       opacity: 0,
+  //       stagger: 0.4,
+  //       scrollTrigger: {
+  //         trigger:card,
+         
+  //         start:"top 60%", 
+  //         end: "+=90",
+        
+        
+  //         scrub: 1, 
+         
+  //       },
+  //     });
+  //   });
+
+  // });
+  useEffect(() => {
+    // Update the state with the window width
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    // Set initial window width
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  
+  useEffect(() => {
+    // Setup ScrollTrigger animations
     const cards = document.querySelectorAll(".service-card");
 
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
       gsap.from(card, {
         y: "30%",
         opacity: 0,
         stagger: 0.4,
         scrollTrigger: {
           trigger: card,
-
           start: "top 60%",
           end: "+=90",
-
+       
           scrub: 1,
         },
       });
     });
-  });
-  // useEffect(() => {
-  //   // Update the state with the window width
-  //   const handleResize = () => setWindowWidth(window.innerWidth);
-
-  //   // Set initial window width
-  //   handleResize();
-
-  //   // Add event listener for window resize
-  //   window.addEventListener('resize', handleResize);
-
-  //   // Cleanup event listener on unmount
-  //   return () => window.removeEventListener('resize', handleResize);
-  // }, [windowWidth]);
-  // useEffect(() => {
-  //   // Setup ScrollTrigger animations
-  //   const cards = document.querySelectorAll(".service-card");
-
-  //   cards.forEach((card) => {
-  //     gsap.from(card, {
-  //       y: "30%",
-  //       opacity: 0,
-  //       stagger: 0.4,
-  //       scrollTrigger: {
-  //         trigger: card,
-  //         start: "top 60%",
-  //         end: "+=90",
-  //       // markers:true,
-  //         scrub: 1,
-  //       },
-  //     });
-  //   });
-  // }, []); // Re-run on windowWidth change
+  }, [windowWidth]); // Re-run on windowWidth change
 
   return (
     <div id="services" className="relative  text-white">
@@ -112,8 +119,10 @@ function ServicePage() {
             return (
               <div key={idx}>
                 {/* Service Card */}
-
-                {window.innerWidth > 768 ? (
+               {
+                windowWidth !== 0 ? 
+                <>
+             {windowWidth > 768 ? (
                   <>
                     {idx % 2 === 0 ? (
                       <>
@@ -220,6 +229,7 @@ function ServicePage() {
                         }}
                       >
                         <Image
+                          
                           src={s.img}
                           alt="service"
                           height={1000}
@@ -267,12 +277,20 @@ function ServicePage() {
                     </div>
                   </>
                 )}
+                </> :
+                 <> 
+                 <p className="h-screen w-screen flex items-center justify-center">
+                  LOADING.......
+                 </p>
+                </>
+               }
+
               </div>
             );
           })}
         </div>
       </div>
-      {/* space div */}
+     
     </div>
   );
 }

@@ -119,7 +119,7 @@ function NavBar() {
           { name: "Home", href: "homePage" },
           { name: "About Us", href: "aboutus" },
           { name: "Services", href: "services" },
-          { name: "Pricing", href: "pricing" },
+          // { name: "Pricing", href: "pricing" },
           { name: "contact us", href: "contactus" },
         ].map((e, idx) => (
           <div
@@ -156,10 +156,10 @@ function NavBar() {
             { name: "Home", href: "homePage" },
             { name: "About Us", href: "aboutus" },
             { name: "Services", href: "services" },
-            { name: "Pricing", href: "pricing" },
+            // { name: "Pricing", href: "pricing" },
             { name: "contact us", href: "contactus" },
           ].map((o, idx) => {
-            if (idx < 4) {
+            if (idx < 3) {
               return (
                 <div
                   key={idx + 100}
@@ -202,30 +202,42 @@ function NavBar() {
             { name: "Home", href: "homePage" },
             { name: "About Us", href: "aboutus" },
             { name: "Services", href: "services" },
-            { name: "Pricing", href: "pricing" },
+            
             { name: "contact us", href: "contactus" },
           ].map((o, idx) => {
-            if (idx > 3) {
+            if (idx > 2) {
               return (
                 <div
-                  key={idx + 100}
-                  className={`option-box relative text-white   
-                    ml-6 min-w-fit  text-[20px] overflow-hidden `}
+                key={idx + 100}
+                className={`option-box relative text-white   
+                  ml-6 min-w-fit  text-[20px] overflow-hidden `}
+              >
+                <div
+                  className={`up-down-box   relative h-full  cursor-pointer flex justify-center   translate-y-[45%]   flex-col  transition-transform duration-300`}
                 >
-                  <div
-                    className={`up-down-box   relative h-full  cursor-pointer flex justify-center   translate-y-[45%]   flex-col  transition-transform duration-300`}
-                  >
-                    (
-                    <>
-                      <a href={`/#${o.href}`}>{o.name}</a>
-                      <a href={`/#${o.href}`}>{o.name}</a>{" "}
-                    </>
-                    )
-                  </div>
-                  <span
-                    className={`absolute  bg-white bottom-0 -translate-x-[110%] transition-transform duration-300 ease-in-out   w-full h-[2px] `}
-                  ></span>
+                  (
+                  <>
+                    <button
+                      onClick={() => {
+                        handleNavigation(o.href);
+                      }}
+                    >
+                      {o.name}
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleNavigation(o.href);
+                      }}
+                    >
+                      {o.name}
+                    </button>{" "}
+                  </>
+                  )
                 </div>
+                <span
+                  className={`absolute  bg-white bottom-0 -translate-x-[110%] transition-transform duration-300 ease-in-out   w-full h-[2px] `}
+                ></span>
+              </div>
               );
             }
           })}
