@@ -54,10 +54,9 @@ linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))`,
         {/* content */}
         <div className="about-us-data w-1/2 md:w-[60%] text-start">
           <h4
-            className="about-us-heading !bg-clip-text [-webkit-text-fill-color:transparent] "
+           className="font-bold font-[inherit] !bg-clip-text [background:linear-gradient(rgba(0,0,_0,_0),_rgba(0,_0,_0,_0)),_linear-gradient(#FF2DF7,#A816FB,#5200FF)] [-webkit-text-fill-color:transparent] inline-block text-[35px] sm:text-4xl md:text-6xl  w-full"
             style={{
-              background: `linear-gradient(89.21deg, #FF2DF7 , #A816FB, #5200FF),
-linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))`,
+              
 
               fontSize: "45px",
               fontWeight: "900",
