@@ -2,9 +2,9 @@ import Image from "next/image";
 
 function AboutUs() {
   return (
-    <div id="aboutus" className="max-w-screen ">
-      <div className="mobile-about-us md:hidden w-full">
-        <div className="image-container sm:w-[60%] mx-auto ">
+    <div id="aboutus" className="max-w-screen mt-48">
+      <div className="mobile-about-us md:hidden w-full ">
+        <div className="image-container w-[70%] sm:w-[60%] mx-auto ">
           <Image
             src={"/images/about-us-cube.png"}
             alt="About-Us"

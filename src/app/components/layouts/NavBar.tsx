@@ -15,6 +15,9 @@ function NavBar() {
   };
 
   const handleNavigation = (id: any) => {
+
+    setNavBarOpen(false);
+
     if (window.location.pathname === "/") {
       // If already on homepage, scroll to #services
       const servicesElement = document.getElementById(id);
@@ -73,9 +76,7 @@ function NavBar() {
       <Link
         href={"/"}
         onClick={() => {
-          if (window.innerWidth < 880) {
-            handleMenuBtn();
-          }
+         
           handleNavigation("homePage");
         }}
         className=" text-white cursor-pointer  logo  font-bold text-3xl"
@@ -83,7 +84,7 @@ function NavBar() {
         <Image src={"/images/XenithLogo.png"} alt="Logo" height={1} width={230}    />
       </Link>
 
-      <div className={`btn  flex justify-center items-center gap-3 `}>
+      <div className={`btn  flex  justify-center items-center gap-3 `}>
         <div
           onClick={handleMenuBtn}
           className={` open-menu-button  cursor-pointer mdd:hidden w-[30px] flex flex-col gap-2 ${
