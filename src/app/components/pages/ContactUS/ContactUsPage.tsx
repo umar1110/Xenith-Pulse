@@ -68,9 +68,9 @@ function ContactUsPage() {
           REQUEST A QUOTE
         </h1>
         <div
-          className={`grid items-center grid-cols-12 p-4 md:p-12 w-full rounded-2xl`}
+          className={`grid items-center grid-cols-12 py-4 lg:px-4 md:p-12 w-full rounded-2xl `}
         >
-          <div className="text-left col-span-full lg:col-span-7 xl:col-span-8  shadow-md   flex items-center w-fit mx-auto lg:mx-0">
+          <div className="text-left col-span-full lg:col-span-7 xl:col-span-8  shadow-md   flex items-center  mx-auto lg:mx-0   ">
             <div className="relative flex flex-col bg-clip-border rounded-xl bg-transparent  xl:pl-32">
               <div className="lg:max-w-lg">
                 <div className="grid gap-6 my-16">
