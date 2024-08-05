@@ -1,14 +1,15 @@
-'use client';
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 function ServicePage() {
   const [windowWidth, setWindowWidth] = useState(0);
 
   gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(useGSAP);
 
   const services = [
     {
@@ -34,43 +35,57 @@ function ServicePage() {
     },
   ];
 
-  useEffect(() => {
-    // Function to handle resize events
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    // Set the initial window width
-    handleResize();
-
-    // Add resize event listener
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Setup ScrollTrigger animations
+  useGSAP(() => {
     const cards = document.querySelectorAll(".service-card");
 
-    cards.forEach((card) => {
+    cards.forEach((card, index) => {
       gsap.from(card, {
         y: "30%",
         opacity: 0,
         stagger: 0.4,
         scrollTrigger: {
           trigger: card,
-          start: "top 60%", 
+
+          start: "top 60%",
           end: "+=90",
-        
+
           scrub: 1,
         },
       });
     });
-  }, [windowWidth]); // Re-run on windowWidth change
+  });
+  // useEffect(() => {
+  //   // Update the state with the window width
+  //   const handleResize = () => setWindowWidth(window.innerWidth);
+
+  //   // Set initial window width
+  //   handleResize();
+
+  //   // Add event listener for window resize
+  //   window.addEventListener('resize', handleResize);
+
+  //   // Cleanup event listener on unmount
+  //   return () => window.removeEventListener('resize', handleResize);
+  // }, [windowWidth]);
+  // useEffect(() => {
+  //   // Setup ScrollTrigger animations
+  //   const cards = document.querySelectorAll(".service-card");
+
+  //   cards.forEach((card) => {
+  //     gsap.from(card, {
+  //       y: "30%",
+  //       opacity: 0,
+  //       stagger: 0.4,
+  //       scrollTrigger: {
+  //         trigger: card,
+  //         start: "top 60%",
+  //         end: "+=90",
+  //       // markers:true,
+  //         scrub: 1,
+  //       },
+  //     });
+  //   });
+  // }, []); // Re-run on windowWidth change
 
   return (
     <div id="services" className="relative  text-white">
@@ -97,7 +112,8 @@ function ServicePage() {
             return (
               <div key={idx}>
                 {/* Service Card */}
-                {windowWidth > 768 ? (
+
+                {window.innerWidth > 768 ? (
                   <>
                     {idx % 2 === 0 ? (
                       <>
@@ -121,7 +137,7 @@ function ServicePage() {
                                 lineHeight: "21.94px",
                                 letterSpacing: "0.16em",
                               }}
-                             className="service-title text-center !bg-clip-text bg-gradient-to-r from-[#FF2DF7] via-[#A816FB] to-[#5200FF] [-webkit-text-fill-color:transparent] my-5 text-[18px] sm:!text-2xl"
+                              className="service-title text-center !bg-clip-text bg-gradient-to-r from-[#FF2DF7] via-[#A816FB] to-[#5200FF] [-webkit-text-fill-color:transparent] my-5 text-[18px] sm:!text-2xl"
                             >
                               {s.name}
                             </h2>
@@ -182,7 +198,6 @@ function ServicePage() {
                   </>
                 ) : (
                   <>
-                 
                     <div className="service-card mdd:flex w-full ">
                       <h2
                         style={{
@@ -205,7 +220,6 @@ function ServicePage() {
                         }}
                       >
                         <Image
-                          loading="lazy"
                           src={s.img}
                           alt="service"
                           height={1000}
@@ -259,7 +273,6 @@ function ServicePage() {
         </div>
       </div>
       {/* space div */}
-     
     </div>
   );
 }
