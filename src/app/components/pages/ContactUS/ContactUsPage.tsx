@@ -164,7 +164,7 @@ function ContactUsPage() {
           <h1 className=" sm:hidden w-[100vw] text-center font-bold font-mono !bg-clip-text [background:linear-gradient(rgba(0,0,_0,_0),_rgba(0,_0,_0,_0)),_linear-gradient(#FF2DF7,#A816FB,#5200FF)] [-webkit-text-fill-color:transparent]  text-[30px] pr-3 sm:text-3xl md:text-6xl ">
             REQUEST A QUOTE
           </h1>
-          <div className="relative flex flex-col bg-clip-border bg-[#111827]  text-gray-700 shadow-md w-full px-0  md:px-32  py-12 text-left bg-gray-white col-span-full rounded-xl lg:col-span-5 lg:px-7 lg:py-20 xl:col-span-4">
+          <div className="relative flex flex-col bg-clip-border bg-[#111827] px-3  text-gray-700 shadow-md w-full mt-2  md:px-32  py-12 text-left bg-gray-white col-span-full rounded-xl lg:col-span-5 lg:px-7 lg:py-20 xl:col-span-4">
             <form
               action="#"
               onSubmit={(e) => {

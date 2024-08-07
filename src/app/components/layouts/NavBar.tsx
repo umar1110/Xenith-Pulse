@@ -71,7 +71,7 @@ function NavBar() {
     <div
       
       id="nav-bar"
-      className={`fixed   flex top-0 left-0 z-[999]  lg:px-12 max-w-screen w-screen  nav-bar justify-between   px-4 py-4`}
+      className={`fixed   flex top-0 left-0 z-[999]  lg:px-12 max-w-screen w-screen  nav-bar justify-between  bg-black px-4 py-4`}
     >
       <Link
         href={"/"}

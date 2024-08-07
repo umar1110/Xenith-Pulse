@@ -114,7 +114,7 @@ function ServicePage() {
         </h1>
 
         {/* Service multiple cards */}
-        <div className="services-cards space-y-20 lg:space-y-26 w-[90%] lg:w-[80%] max-w-[1600px] mx-auto h-full">
+        <div className="services-cards space-y-20 lg:space-y-26 w-[95%] xl:w-[80%] max-w-[1600px] mx-auto h-full">
           {services.map((s, idx) => {
             return (
               <div key={idx}>
@@ -138,7 +138,7 @@ function ServicePage() {
                             />
                           </div>
                           {/* content */}
-                          <div className="service-content flex flex-col items-center md:items-start md:justify-center md:pl-12 md:text-start py-7 md:w-[60%] space-y-4">
+                          <div className="service-content flex flex-col items-center md:items-start md:justify-center md:pl-12 md:text-start py-7 md:w-[60%] space-y-4 ">
                             <h2
                               style={{
                                 fontFamily: " sans-serif",
@@ -150,10 +150,10 @@ function ServicePage() {
                             >
                               {s.name}
                             </h2>
-                            <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center md:text-start mb-3 lg:w-[85%]">
+                            <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center   md:text-start mb-3 xl:w-[85%]">
                               {s.title}
                             </h2>
-                            <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg text-center md:text-start lg:w-[50%]">
+                            <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg  text-center md:text-start xl:w-[50%]">
                               {s.description}
                             </p>
 
@@ -177,10 +177,10 @@ function ServicePage() {
                             >
                               {s.name}
                             </h2>
-                            <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center md:text-start mb-3 lg:w-[85%]">
+                            <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center md:text-start mb-3 xl:w-[85%]">
                               {s.title}
                             </h2>
-                            <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg text-center md:text-start lg:w-[50%]">
+                            <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg text-center md:text-start xl:w-[50%]">
                               {s.description}
                             </p>
                             <div className="w-[60%] h-[1px] bg-gradient-to-r from-[#00F0FF] via-[#5200FF] to-[#FF2DF7] my-20 rounded-[100%] opacity-70"></div>
