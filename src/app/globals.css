@@ -67,3 +67,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+#custom-cursor{
+  position: absolute;
+  width:20px;
+  height:20px;
+  border:2px solid black ;
+  box-sizing:border-box;
+  transition:0.1s;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  z-index:100;
+  background-color:transparent;
+  pointer-events:none;
+  left:100px;
+  top:100px;
+
+ 
+    
+}
+
+#LandingPage{
+   cursor:none
+}

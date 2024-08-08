@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 function ServicePage() {
@@ -18,6 +19,7 @@ function ServicePage() {
       title: "LET US BRING YOUR BRAND TO LIFE!",
       description:
         "We are specialize in creating eye-catching visuals, custom graphics and strategic social media content to bring your brand to life.",
+        href :"services/content-creation"
     },
     {
       img: "/images/service02.jfif",
@@ -25,6 +27,7 @@ function ServicePage() {
       title: "ELEVATE YOUR BUSINES WITH IMPACTFUL TACTICS!",
       description:
         "We deliver innovative sales and marketing strategies designed to boost your brand’s visibility and drive results",
+        href :"services/sales-and-marketing"
     },
     {
       img: "/images/service03.png",
@@ -32,10 +35,9 @@ function ServicePage() {
       title: "UNLEASH YOUR BRAND’S POTENTIAL WITH TOP-NOTCH WEBSITE!",
       description:
         "We craft cutting-edge, user friendly websites designed to elevate your brand and drive growth.",
+        href :"services/website-develpment"
     },
   ];
-
- 
 
   // useGSAP(() => {
   //   const cards = document.querySelectorAll(".service-card");
@@ -47,13 +49,12 @@ function ServicePage() {
   //       stagger: 0.4,
   //       scrollTrigger: {
   //         trigger:card,
-         
-  //         start:"top 60%", 
+
+  //         start:"top 60%",
   //         end: "+=90",
-        
-        
-  //         scrub: 1, 
-         
+
+  //         scrub: 1,
+
   //       },
   //     });
   //   });
@@ -67,13 +68,12 @@ function ServicePage() {
     handleResize();
 
     // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup event listener on unmount
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
   useEffect(() => {
     // Setup ScrollTrigger animations
     const cards = document.querySelectorAll(".service-card");
@@ -87,7 +87,7 @@ function ServicePage() {
           trigger: card,
           start: "top 60%",
           end: "+=90",
-       
+
           scrub: 1,
         },
       });
@@ -114,21 +114,140 @@ function ServicePage() {
         </h1>
 
         {/* Service multiple cards */}
-        <div className="services-cards space-y-20 lg:space-y-26 w-[95%] xl:w-[80%] max-w-[1600px] mx-auto h-full">
+        
+       { windowWidth !== 0 ?  <div className="services-cards space-y-20 lg:space-y-26 w-[95%] xl:w-[80%] max-w-[1600px] mx-auto h-full">
           {services.map((s, idx) => {
             return (
               <div key={idx}>
                 {/* Service Card */}
-               {
-                windowWidth !== 0 ? 
-                <>
-             {windowWidth > 768 ? (
+              
                   <>
-                    {idx % 2 === 0 ? (
+                    {windowWidth > 768 ? (
                       <>
-                        <div className="service-card md:flex">
+                        {idx % 2 === 0 ? (
+                          <>
+                            <div className="service-card md:flex items-center justify-center min-h-fit  ">
+                              {/* image */}
+                              <div className="service-image rounded-xl overflow-hidden w-[96%] sm:w-[60%] md:w-[40%] sm:h-full md:h-full mx-auto bg-red-600  ">
+                                <Image
+                                  src={s.img}
+                                  alt="service"
+                                  height={1000}
+                                  width={10000}
+                                  className="w-full h-full"
+                                />
+                              </div>
+                              {/* content */}
+                              <div className="service-content flex flex-col items-center md:items-start md:justify-center md:pl-12 md:text-start py-7 md:w-[60%] space-y-1 ">
+                                <h2
+                                  style={{
+                                    fontFamily: " sans-serif",
+                                    fontWeight: 900,
+                                    lineHeight: "21.94px",
+                                    letterSpacing: "0.16em",
+                                  }}
+                                  className="service-title text-center !bg-clip-text bg-gradient-to-r from-[#FF2DF7] via-[#A816FB] to-[#5200FF] [-webkit-text-fill-color:transparent]  text-[18px] sm:!text-2xl"
+                                >
+                                  {s.name}
+                                </h2>
+                                <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center   md:text-start xl:w-[100%]">
+                                  {s.title}
+                                </h2>
+                                <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg  text-center md:text-start xl:w-[50%]">
+                                  {s.description}
+                                </p>
+
+                                <div className="w-[60%] h-[1px] bg-gradient-to-r from-[#00F0FF] via-[#5200FF] to-[#FF2DF7]  rounded-[100%] opacity-70 !my-3"></div>
+                                <Link
+                                  style={{
+                                    background:
+                                      "linear-gradient(to right, #FF2DF7, #A816FB ,#5200FF)",
+                                  }}
+                                  href={`/${s.href}`}
+                                  className="px-9 py-3 font-bold rounded-full  "
+                                >
+                                  Learn More
+                                </Link>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="service-card md:flex">
+                              {/* content */}
+                              <div className="service-content flex flex-col items-center md:items-start md:justify-center md:pr-12 md:text-start py-7 md:w-[60%] space-y-4">
+                                <h2
+                                  style={{
+                                    fontFamily: "Montserrat, sans-serif",
+                                    fontWeight: 700,
+                                    lineHeight: "21.94px",
+                                    letterSpacing: "0.16em",
+                                  }}
+                                  className="service-title text-center !bg-clip-text bg-gradient-to-r from-[#FF2DF7] via-[#A816FB] to-[#5200FF] [-webkit-text-fill-color:transparent]  text-[18px] sm:!text-2xl"
+                                >
+                                  {s.name}
+                                </h2>
+                                <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center md:text-start  xl:w-[85%]">
+                                  {s.title}
+                                </h2>
+                                <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg text-center md:text-start xl:w-[50%]">
+                                  {s.description}
+                                </p>
+                                <div className="w-[60%] h-[1px] bg-gradient-to-r from-[#00F0FF] via-[#5200FF] to-[#FF2DF7] my-20 rounded-[100%] opacity-70"></div>
+                                <Link
+                                  style={{
+                                    background:
+                                      "linear-gradient(to right, #FF2DF7, #A816FB ,#5200FF)",
+                                  }}
+                                  href={`/${s.href}`}
+                                  className="px-9 py-3 font-bold rounded-full  "
+                                >
+                                  Learn More
+                                </Link>
+                              </div>
+                              {/* image */}
+                              <div
+                                className="service-image bg-black rounded-xl overflow-hidden w-[96%] sm:w-[60%] sm:h-[300px] md:h-full md:w-[40%] mx-auto"
+                                style={{
+                                  boxShadow:
+                                    " rgba(0, 0, 0, 0.5) -7px 10px 15px, rgba(0, 0, 0, 0.27) 0px 10px 10px",
+                                }}
+                              >
+                                <Image
+                                  src={s.img}
+                                  alt="service"
+                                  height={10000}
+                                  width={10000}
+                                  className="w-full h-full"
+                                />
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <div className="service-card mdd:flex w-full ">
+                          <h2
+                            style={{
+                              fontFamily: "Montserrat, sans-serif",
+                              fontWeight: 700,
+                              lineHeight: "21.94px",
+                              letterSpacing: "0.16em",
+                            }}
+                            className="service-title text-center !bg-clip-text [background:linear-gradient(rgba(0,0,_0,_0),_rgba(0,_0,_0,_0)),_linear-gradient(#FF2DF7,#A816FB,#5200FF)]  [-webkit-text-fill-color:transparent] my-5 text-[18px] sm:!text-2xl"
+                          >
+                            {s.name}
+                          </h2>
                           {/* image */}
-                          <div className="service-image rounded-xl overflow-hidden w-[96%] sm:w-[60%] md:w-[40%] sm:h-[300px] md:h-[400px] mx-auto">
+
+                          <div
+                            className="service-image rounded-xl overflow-hidden w-[96%] sm:w-[80%] min-h-[200px] mx-auto"
+                            style={{
+                              boxShadow:
+                                " rgba(0, 0, 0, 0.5) 0px 3px 15px, rgba(0, 0, 0, 0.27) 0px 10px 10px",
+                            }}
+                          >
                             <Image
                               src={s.img}
                               alt="service"
@@ -138,132 +257,32 @@ function ServicePage() {
                             />
                           </div>
                           {/* content */}
-                          <div className="service-content flex flex-col items-center md:items-start md:justify-center md:pl-12 md:text-start py-7 md:w-[60%] space-y-4 ">
-                            <h2
-                              style={{
-                                fontFamily: " sans-serif",
-                                fontWeight: 900,
-                                lineHeight: "21.94px",
-                                letterSpacing: "0.16em",
-                              }}
-                              className="service-title text-center !bg-clip-text bg-gradient-to-r from-[#FF2DF7] via-[#A816FB] to-[#5200FF] [-webkit-text-fill-color:transparent] my-5 text-[18px] sm:!text-2xl"
-                            >
-                              {s.name}
-                            </h2>
-                            <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center   md:text-start mb-3 xl:w-[85%]">
-                              {s.title}
-                            </h2>
-                            <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg  text-center md:text-start xl:w-[50%]">
-                              {s.description}
-                            </p>
-
-                            <div className="w-[60%] h-[1px] bg-gradient-to-r from-[#00F0FF] via-[#5200FF] to-[#FF2DF7] my-20 rounded-[100%] opacity-70"></div>
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="service-card md:flex">
-                          {/* content */}
-                          <div className="service-content flex flex-col items-center md:items-start md:justify-center md:pr-12 md:text-start py-7 md:w-[60%] space-y-4">
-                            <h2
+                          <div className="service-content flex flex-col items-center py-7 space-y-4">
+                            <p
                               style={{
                                 fontFamily: "Montserrat, sans-serif",
+                                fontSize: "20px",
                                 fontWeight: 700,
-                                lineHeight: "21.94px",
-                                letterSpacing: "0.16em",
+                                lineHeight: "24.38px",
+                                textAlign: "center",
                               }}
-                              className="service-title text-center !bg-clip-text bg-gradient-to-r from-[#FF2DF7] via-[#A816FB] to-[#5200FF] [-webkit-text-fill-color:transparent] my-5 text-[18px] sm:!text-2xl"
+                              className="w-[60%] mx-auto sm:!text-[25px] text-white"
                             >
-                              {s.name}
-                            </h2>
-                            <h2 className="service-title leading-7 text-4xl md:text-5xl font-bold text-center md:text-start mb-3 xl:w-[85%]">
                               {s.title}
-                            </h2>
-                            <p className="service-description w-[80%] md:w-full mx-auto lg:mx-0 md:text-lg text-center md:text-start xl:w-[50%]">
+                            </p>
+                            <p
+                              style={{
+                                fontFamily: "Montserrat, sans-serif",
+                                fontSize: "16px",
+                                fontWeight: 700,
+                                lineHeight: "19.5px",
+                                textAlign: "center",
+                              }}
+                              className="service-description w-[100%] sm:w-[90%] sm:!text-[19px]"
+                            >
                               {s.description}
                             </p>
-                            <div className="w-[60%] h-[1px] bg-gradient-to-r from-[#00F0FF] via-[#5200FF] to-[#FF2DF7] my-20 rounded-[100%] opacity-70"></div>
-                          </div>
-                          {/* image */}
-                          <div
-                            className="service-image bg-black rounded-xl overflow-hidden w-[96%] sm:w-[60%] sm:h-[300px] md:h-[400px] md:w-[40%] mx-auto"
-                            style={{
-                              boxShadow:
-                                " rgba(0, 0, 0, 0.5) -7px 10px 15px, rgba(0, 0, 0, 0.27) 0px 10px 10px",
-                            }}
-                          >
-                            <Image
-                              src={s.img}
-                              alt="service"
-                              height={10000}
-                              width={10000}
-                              className="w-full h-full"
-                            />
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <div className="service-card mdd:flex w-full ">
-                      <h2
-                        style={{
-                          fontFamily: "Montserrat, sans-serif",
-                          fontWeight: 700,
-                          lineHeight: "21.94px",
-                          letterSpacing: "0.16em",
-                        }}
-                        className="service-title text-center !bg-clip-text [background:linear-gradient(rgba(0,0,_0,_0),_rgba(0,_0,_0,_0)),_linear-gradient(#FF2DF7,#A816FB,#5200FF)]  [-webkit-text-fill-color:transparent] my-5 text-[18px] sm:!text-2xl"
-                      >
-                        {s.name}
-                      </h2>
-                      {/* image */}
-
-                      <div
-                        className="service-image rounded-xl overflow-hidden w-[96%] sm:w-[80%] min-h-[200px] mx-auto"
-                        style={{
-                          boxShadow:
-                            " rgba(0, 0, 0, 0.5) 0px 3px 15px, rgba(0, 0, 0, 0.27) 0px 10px 10px",
-                        }}
-                      >
-                        <Image
-                          
-                          src={s.img}
-                          alt="service"
-                          height={1000}
-                          width={10000}
-                          className="w-full h-full"
-                        />
-                      </div>
-                      {/* content */}
-                      <div className="service-content flex flex-col items-center py-7 space-y-4">
-                        <p
-                          style={{
-                            fontFamily: "Montserrat, sans-serif",
-                            fontSize: "20px",
-                            fontWeight: 700,
-                            lineHeight: "24.38px",
-                            textAlign: "center",
-                          }}
-                          className="w-[60%] mx-auto sm:!text-[25px] text-white"
-                        >
-                          {s.title}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: "Montserrat, sans-serif",
-                            fontSize: "16px",
-                            fontWeight: 700,
-                            lineHeight: "19.5px",
-                            textAlign: "center",
-                          }}
-                          className="service-description w-[100%] sm:w-[90%] sm:!text-[19px]"
-                        >
-                          {s.description}
-                        </p>
-                        {/* <Link
+                            {/* <Link
                           style={{
                             background:
                               "linear-gradient(to right, #FF2DF7, #A816FB ,#5200FF)",
@@ -273,24 +292,38 @@ function ServicePage() {
                         >
                           Learn More
                         </Link> */}
-                      </div>
-                    </div>
+                          </div>
+                          <div className="w-[60%] h-[1px] bg-gradient-to-r from-[#00F0FF] via-[#5200FF] to-[#FF2DF7]  rounded-[100%] opacity-70 !mb-5 mx-auto"></div>
+                          <div className="button-learn-mob  flex justify-center">
+                          <Link
+                                  style={{
+                                    background:
+                                      "linear-gradient(to right, #FF2DF7, #A816FB ,#5200FF)",
+                                  }}
+                                  href={`/${s.href}`}
+                                  className="px-12 py-3 font-bold rounded-full mx-auto   "
+                                >
+                                  Learn More
+                                </Link>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </>
-                )}
-                </> :
-                 <> 
-                 <p className="h-screen w-screen flex items-center justify-center">
-                  LOADING.......
-                 </p>
-                </>
-               }
-
+              
               </div>
             );
           })}
-        </div>
+        </div> :
+        (
+          <>
+            <p className=" h-screen w-screen flex items-center justify-center">
+              LOADING.......
+            </p>
+          </>
+        )
+        }
       </div>
-     
     </div>
   );
 }

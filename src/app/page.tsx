@@ -35,3 +35,51 @@ export default function Home() {
     </>
   );
 }
+// 'use client'
+
+// import { useEffect,useRef } from "react";
+
+// export default function Home() {
+
+
+  
+//   const cursorRef = useRef<HTMLDivElement>(null);
+
+//   useEffect(() => {
+//     const moveCursor = (e: MouseEvent) => {
+//       if (cursorRef.current) {
+//         cursorRef.current.style.left = `${e.offsetX}px`;
+//         cursorRef.current.style.top = `${e.offsetY}px`;
+//         console.log(e)
+//       }
+//     };
+
+//     const page = document.getElementById("LandingPage");
+//     const cursor = document.getElementById("custom-cursor") || <div style={{}}></div> ;
+
+//     if (page) {
+//       page.addEventListener("mousemove", moveCursor);
+
+//       // Handle cursor position during scroll
+//       page.addEventListener("mouseenter",moveCursor);
+//       page.addEventListener("mouseleave", () => {
+//         // cursorRef.style.scale = 0;
+//       });
+//     }
+
+//     console.log(cursorRef)
+//     return () => {};
+//   }, []);
+
+//   return (
+//     <>
+//     <div  id="LandingPage" className="min-h-screen mt-20 !bg-red-300 relative" >
+//       <div ref={cursorRef}   id="custom-cursor" className="custom-cursor">
+//         Hello
+//       </div>
+      
+//     </div>
+//     </>
+//   );
+// }
+
