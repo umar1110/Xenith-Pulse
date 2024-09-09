@@ -14,28 +14,28 @@ function ServicePage() {
 
   const services = [
     {
-      img: "/images/service01.jfif",
+      img: "https://res.cloudinary.com/dvobpdvef/image/upload/f_auto,q_auto/v1/Important%20Data/v2cspju3grnnv5kyeumm",
       name: "CONTENT CREATION",
       title: "LET US BRING YOUR BRAND TO LIFE!",
       description:
         "We are specialize in creating eye-catching visuals, custom graphics and strategic social media content to bring your brand to life.",
-        href :"services/content-creation"
+      href: "content-creation",
     },
     {
-      img: "/images/service02.jfif",
+      img: "https://res.cloudinary.com/dvobpdvef/image/upload/f_auto,q_auto/v1/Important%20Data/ide6rkpyzzbpdjsnpcah",
       name: "SALES AND MARKETING",
       title: "ELEVATE YOUR BUSINES WITH IMPACTFUL TACTICS!",
       description:
         "We deliver innovative sales and marketing strategies designed to boost your brand’s visibility and drive results",
-        href :"services/sales-and-marketing"
+      href: "sales-and-marketing",
     },
     {
-      img: "/images/service03.png",
+      img: "https://res.cloudinary.com/dvobpdvef/image/upload/f_auto,q_auto/v1/Important%20Data/iklapbnycsg9ncv0l0jm",
       name: "WEBSITE DEVELOPMENT",
       title: "UNLEASH YOUR BRAND’S POTENTIAL WITH TOP-NOTCH WEBSITE!",
       description:
         "We craft cutting-edge, user friendly websites designed to elevate your brand and drive growth.",
-        href :"services/website-develpment"
+      href: "website-develpment",
     },
   ];
 
@@ -114,13 +114,14 @@ function ServicePage() {
         </h1>
 
         {/* Service multiple cards */}
-        
-       { windowWidth !== 0 ?  <div className="services-cards space-y-20 lg:space-y-26 w-[95%] xl:w-[80%] max-w-[1600px] mx-auto h-full">
-          {services.map((s, idx) => {
-            return (
-              <div key={idx}>
-                {/* Service Card */}
-              
+
+        {windowWidth !== 0 ? (
+          <div className="services-cards space-y-20 lg:space-y-26 w-[95%] xl:w-[80%] max-w-[1600px] mx-auto h-full">
+            {services.map((s, idx) => {
+              return (
+                <div key={idx}>
+                  {/* Service Card */}
+
                   <>
                     {windowWidth > 768 ? (
                       <>
@@ -295,34 +296,32 @@ function ServicePage() {
                           </div>
                           <div className="w-[60%] h-[1px] bg-gradient-to-r from-[#00F0FF] via-[#5200FF] to-[#FF2DF7]  rounded-[100%] opacity-70 !mb-5 mx-auto"></div>
                           <div className="button-learn-mob  flex justify-center">
-                          <Link
-                                  style={{
-                                    background:
-                                      "linear-gradient(to right, #FF2DF7, #A816FB ,#5200FF)",
-                                  }}
-                                  href={`/${s.href}`}
-                                  className="px-12 py-3 font-bold rounded-full mx-auto   "
-                                >
-                                  Learn More
-                                </Link>
+                            <Link
+                              style={{
+                                background:
+                                  "linear-gradient(to right, #FF2DF7, #A816FB ,#5200FF)",
+                              }}
+                              href={`/${s.href}`}
+                              className="px-12 py-3 font-bold rounded-full mx-auto   "
+                            >
+                              Learn More
+                            </Link>
                           </div>
                         </div>
                       </>
                     )}
                   </>
-              
-              </div>
-            );
-          })}
-        </div> :
-        (
+                </div>
+              );
+            })}
+          </div>
+        ) : (
           <>
             <p className=" h-screen w-screen flex items-center justify-center">
               LOADING.......
             </p>
           </>
-        )
-        }
+        )}
       </div>
     </div>
   );
